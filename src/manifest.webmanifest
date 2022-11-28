@@ -6,6 +6,24 @@
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
+  "related_applications": [{
+    "platform": "webapp",
+    "url": "https://application-testing-ad7df.web.app/manifest.webmanifest"
+  }],
+  "prefer_related_applications": true,
+  "assetGroups": [   
+    {  
+      "name": "assets",  
+      "installMode": "lazy",  
+      "updateMode": "prefetch",  
+      "resources": {  
+        "files": [  
+          "/assets/**",  
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"  
+        ]  
+      }  
+    }  
+  ] ,
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

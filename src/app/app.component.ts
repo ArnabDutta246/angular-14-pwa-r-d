@@ -22,21 +22,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("app component ts", this.swUpdate.isEnabled);
-
-    // if (this.swUpdate.isEnabled) {
-    this.ngZone.runOutsideAngular(() =>
-      interval(1000 * 10).subscribe(val => {
-        console.log("interval:", val)
-        this.swServ.check();
-        this.swUpdate.available.subscribe(() => {
-          console.log("New version available. Load New Version?");
-          if (confirm("New version available. Load New Version?")) {
-            //  window.location.reload();
-          }
-        });
-      })
-    )
-    // }
   }
   fun(e, k) {
     // console.log(k);
