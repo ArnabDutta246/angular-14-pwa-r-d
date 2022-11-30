@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { interval } from 'rxjs/internal/observable/interval';
+import { environment } from 'src/environments/environment';
 import { SwService } from './services/sw/sw.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { SwService } from './services/sw/sw.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  public currentApplicationVersion = environment.appVersion;
   public appPages = [
     { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
     { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },

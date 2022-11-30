@@ -1,32 +1,9 @@
-<ion-header [translucent]="true">
-  <ion-toolbar color="danger">
-    <ion-buttons slot="start" color="warning">
-      <ion-menu-button color="dark"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }} <span style="font-size: 11px; letter-spacing:1.2px;">v{{currentApplicationVersion}}</span>
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button color="dark" size="small" fill="clear" (click)="updateCheckPwa()">
-        <ion-icon name="swap-horizontal"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-  <ion-toolbar color="light" *ngIf="msg">
-    <ion-title class="ion-text-wrap">
-      <ion-text class="ion-text-wrap" color="dark" style="font-size: 10px;">
-        {{msg}}
-      </ion-text>
-    </ion-title>
-    <ion-buttons slot="end">
-      <ion-button color="warning" size="small" fill="outline" (click)="reloadPage()">Reload</ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
 <ion-content [fullscreen]="true">
   <!-- Product Arr -->
   <ion-row class="ion-no-margin ion-no-padding">
-    <ion-col size="6" *ngFor="let product of products" class="ion-no-margin ion-no-padding">
+    <!-- <ion-col size="6" *ngFor="let product of products" class="ion-no-margin ion-no-padding">
       <ion-card>
         <img style="
             max-height: 170px !important;
@@ -46,7 +23,7 @@
           </div>
         </div>
       </ion-card>
-    </ion-col>
+    </ion-col> -->
   </ion-row>
   <!-- <ion-card>
     <h5>{{msg}}</h5>

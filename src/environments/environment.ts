@@ -4,7 +4,8 @@
 
 export const environment = {
   appVersion: require('../../package.json').version + '-dev',
-  production: false
+  production: false,
+  url: 'https://application-testing-ad7df.web.app'
 };
 
 /*

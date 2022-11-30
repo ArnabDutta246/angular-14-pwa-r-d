@@ -14,7 +14,7 @@ import { FolderService } from './folder.service';
 })
 export class FolderPage implements OnInit {
   public folder: string;
-  public currentApplicationVersion = environment.appVersion;
+
   public msg: string;
   public products: I_Products[] = [];
   constructor(private folderServ: FolderService, private swUpdate: SwUpdate, private activatedRoute: ActivatedRoute, private swService: SwService, private common: CommonService) { }

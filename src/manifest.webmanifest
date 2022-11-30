@@ -1,11 +1,11 @@
 {
-  "name": "app",
-  "short_name": "app",
+  "name": "PWA E-sambhandh",
+  "short_name": "PWA E-sambhandh",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",
-  "start_url": "./",
+  "start_url": "https://application-testing-ad7df.web.app",
   "related_applications": [{
     "platform": "webapp",
     "url": "https://application-testing-ad7df.web.app/manifest.webmanifest"
@@ -72,6 +72,22 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Open Dashboard",
+      "short_name": "Dashboard",
+      "description": "View latest order and graph",
+      "url": "/folder/Inbox",
+      "icons": [{ "src": "assets/icons/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "View Orders",
+      "short_name": "Orders",
+      "description": "View current open orders",
+      "url": "/folder/Inbox",
+      "icons": [{ "src": "assets/icons/icon-192x192.png", "sizes": "192x192" }]
     }
   ]
 }

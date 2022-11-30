@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start" color="warning">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Berger PWA<span style="font-size: 11px; letter-spacing:1.2px;">v{{currentApplicationVersion}}</span>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="primary" size="small" fill="clear" id="click-trigger" *ngIf="showButton && deferredPrompt"
+        #clickAddToHome (click)="buttonAddToHome()">
+        <img src="./assets/images/home.png" alt="" style="height: 25px;">
+      </ion-button>
+      <ion-popover trigger="click-trigger" triggerAction="click">
+        <ng-template>
+          <ion-content class="ion-padding">
+            <div class="d-flex">
+              <img src="./assets/images/home.png" alt="" style="height: 25px;">
+              <p>Add to Home Screen</p>
+            </div>
+
+            <ion-button expand="block" fill="soild" (click)="addToHomeScreen()" color="warning" class="add-btn">+ Add
+              Now</ion-button>
+          </ion-content>
+        </ng-template>
+      </ion-popover>
+
+      <ion-button color="dark" size="small" fill="clear" (click)="updateCheckPwa()">
+        <ion-icon name="swap-horizontal"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="dark" *ngIf="msg">
+    <ion-title class="ion-text-wrap">
+      <ion-text class="ion-text-wrap" color="dark" style="font-size: 10px;">
+        {{msg}}
+      </ion-text>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="light" size="small" fill="outline" (click)="reloadPage()">Reload</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
