@@ -88,7 +88,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         } else {
           console.log("this is not standalone app");
           this.showButton = false;
-          window.open(environment.url)
+          //window.open(environment.url)
         }
       });
     } else {

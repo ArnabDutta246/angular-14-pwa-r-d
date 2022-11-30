@@ -1,0 +1,7 @@
+[ {
+    "relation": ["delegate_permission/common.query_webapk"],
+    "target": {
+      "namespace": "web",
+      "site": "https://application-testing-ad7df.web.app/manifest.webmanifest"
+    }
+  }]
