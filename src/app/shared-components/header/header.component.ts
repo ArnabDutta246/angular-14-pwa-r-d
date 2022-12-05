@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
+import { AlertController } from '@ionic/angular';
 import { CommonService } from 'src/app/services/common/common.service';
 import { SwService, sw_interface } from 'src/app/services/sw/sw.service';
 import { environment } from 'src/environments/environment';
@@ -36,7 +37,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     private swUpdate: SwUpdate,
     private activatedRoute: ActivatedRoute,
     private swService: SwService,
-    private common: CommonService
+    private common: CommonService,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -45,8 +47,10 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit(): void {
     if (this.clickAddToHome) {
-      let el: HTMLElement = this.clickAddToHome.nativeElement;
-      el.click();
+      // let el: HTMLElement = this.clickAddToHome.nativeElement;
+      // el.click();
+      let element: HTMLElement = document.getElementById('click-trigger') as HTMLElement;
+      element.click();
     }
   }
   //================*******======================//
@@ -88,13 +92,17 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         } else {
           console.log("this is not standalone app");
           this.showButton = false;
-          //window.open(environment.url)
+          // window.open(environment.url)
+          this.goToPwaApp();
         }
       });
     } else {
+      this.showButton = true;
       console.log("Has not already installed:",);
-      let el: HTMLElement = this.clickAddToHome.nativeElement;
-      el.click();
+      // let el: HTMLElement = this.clickAddToHome.nativeElement;
+      // el.click();
+      let element: HTMLElement = document.getElementById('click-trigger') as HTMLElement;
+      element.click();
     }
   }
   //==============[Add to home screen]====================
@@ -115,4 +123,29 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       });
   }
 
+  async goToPwaApp() {
+    const alert = await this.alertController.create({
+      header: 'Continue with installed application !',
+      cssClass: 'custom-alert',
+      mode: 'ios',
+      buttons: [
+        {
+          text: 'Continue Here',
+          cssClass: 'alert-button-cancel',
+          handler: () => {
+            // N/a
+          }
+        },
+        {
+          text: 'Open In App',
+          cssClass: 'alert-button-confirm',
+          handler: () => {
+            window.open(environment.url)
+          }
+        },
+      ],
+    });
+
+    await alert.present();
+  }
 }

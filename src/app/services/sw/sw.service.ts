@@ -19,7 +19,7 @@ export class SwService {
   private eventMsg = {
     [SW_EVENTS.VERSION_DETECTED]: 'New Version Getted, Please Reload the page',
     [SW_EVENTS.VERSION_READY]: 'New Version Ready To Load, Please Reload the page',
-    [SW_EVENTS.VERSION_INSTALLATION_FAILED]: 'Version Instalation Faild Please Reload the page'
+    [SW_EVENTS.VERSION_INSTALLATION_FAILED]: 'Version Installation Failed Please Reload the page'
   }
 
 
@@ -59,6 +59,8 @@ export class SwService {
 
   //======================[Check PWA UPDATE]========================//
   checkPWAUpdatedion() {
+    console.log("update is working");
+
     this.updates.checkForUpdate().then((res: boolean) => {
       console.log("check for update working result (checkForUpdate)", res);
       if (res) {

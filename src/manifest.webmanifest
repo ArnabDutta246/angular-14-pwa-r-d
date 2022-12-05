@@ -4,6 +4,7 @@
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
+  "description": "Awesome application that will help you achieve your dreams.",
   "scope": "/app/",
   "start_url": "https://application-testing-ad7df.web.app",
   "related_applications": [{

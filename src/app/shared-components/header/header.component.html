@@ -29,14 +29,14 @@
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar color="dark" *ngIf="msg">
+  <ion-toolbar color="warning" *ngIf="msg">
     <ion-title class="ion-text-wrap">
       <ion-text class="ion-text-wrap" color="dark" style="font-size: 10px;">
         {{msg}}
       </ion-text>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button color="light" size="small" fill="outline" (click)="reloadPage()">Reload</ion-button>
+      <ion-button color="danger" size="small" fill="outline" (click)="reloadPage()">Reload</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
