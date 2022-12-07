@@ -14,4 +14,8 @@ export class FolderService {
   getAllProducts(): Observable<I_Products[]> {
     return this.http.get(this.url) as Observable<I_Products[]>;
   }
+  // get single Products
+  getSingleProducts(id): Observable<I_Products> {
+    return this.http.get(this.url + '/' + id) as Observable<I_Products>;
+  }
 }
