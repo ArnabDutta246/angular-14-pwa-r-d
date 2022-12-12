@@ -15,6 +15,14 @@ const routes: Routes = [
     loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
   },
   {
+    path: 'rxjs',
+    loadChildren: () => import('./pages/rxjs/rxjs.module').then(m => m.RxjsPageModule)
+  },
+  {
+    path: 'indexed-db',
+    loadChildren: () => import('./pages/indexed-db/indexed-db.module').then(m => m.IndexedDBPageModule)
+  },
+  {
     path: '',
     redirectTo: 'folder/Inbox',
     pathMatch: 'full'
@@ -23,6 +31,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'folder/Inbox',
   },
+
 ];
 
 @NgModule({
