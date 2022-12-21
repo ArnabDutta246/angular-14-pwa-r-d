@@ -31,6 +31,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'folder/Inbox',
   },
+  {
+    path: 'lead',
+    loadChildren: () => import('./pages/lead/lead.module').then( m => m.LeadPageModule)
+  },
 
 ];
 

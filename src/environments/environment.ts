@@ -5,7 +5,9 @@
 export const environment = {
   appVersion: require('../../package.json').version + '-dev',
   production: false,
-  url: 'https://application-testing-ad7df.web.app'
+  url: 'https://application-testing-ad7df.web.app',
+  BASEURL: 'https://bpilmobile.bergerindia.com/BERGERDAT/api/v1.0/',
+  XP_MODULE: 'XP/'
 };
 
 /*

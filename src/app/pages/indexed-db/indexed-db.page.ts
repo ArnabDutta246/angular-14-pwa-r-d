@@ -93,11 +93,12 @@ export class IndexedDBPage implements OnInit {
   }
   //********************[Delete Indexed DB Function]*******************/
   deleteProduct(item: I_Products) {
-    let insertObj: I_IndexedDB_INSERT<I_Products> =
-    {
-      'tableName': ALL_TABLE_NAME.PRODUCT,
-      'data': { ...item }
-    }
+    let insertObj: I_IndexedDB_INSERT<I_Products>[] = [
+      {
+        'tableName': ALL_TABLE_NAME.PRODUCT,
+        'data': { ...item }
+      }
+    ]
 
     this.indexedDB_Serv
       .deleteInsertedData(insertObj)

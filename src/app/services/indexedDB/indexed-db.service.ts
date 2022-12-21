@@ -23,19 +23,16 @@ export class IndexedDbService<T> {
   }
   //*****************[IDB INSERT NEW DATA]*****************/
   insertNewData(e: I_IndexedDB_INSERT<T>[]): Promise<boolean> {
-    console.log("DATA", e);
     return new Promise((resolve, reject) => {
       let idb = this.openDB();
       idb.onerror = (ev) => {
-        console.log("Error log", ev);
-        this.common.presentToast('Error occured during indexedDB table open.', 'error');
         return reject(false);
       }
       idb.onupgradeneeded = (ev) => {
         let res = idb.result;
       }
       idb.onsuccess = (ev) => {
-        this.commonInsert('INSERT', idb, e);
+        this.commonInsertUpdateDelete('INSERT', idb, e);
         return resolve(true);
       }
     })
@@ -46,53 +43,49 @@ export class IndexedDbService<T> {
     return new Promise((resolve, reject) => {
       let idb = this.openDB();
       idb.onsuccess = () => {
-        this.commonInsert('UPDATE', idb, e);
+        this.commonInsertUpdateDelete('UPDATE', idb, e);
         return resolve(true);
       }
       idb.onupgradeneeded = (ev) => {
         let res = idb.result;
       }
       idb.onerror = (ev) => {
-        console.log("Error log", ev);
-        this.common.presentToast('Error occured during indexedDB table open.', 'error');
+        return reject(false);
+      }
+    })
+  }
+
+  //*****************[IDB COMMON INSERT/UPDATE ]*****************/
+  deleteInsertedData(e: I_IndexedDB_INSERT<T>[]): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      let idb = this.openDB();
+      idb.onsuccess = () => {
+        this.commonInsertUpdateDelete('DELETE', idb, e);
+        return resolve(true);
+      }
+      idb.onupgradeneeded = (ev) => {
+        let res = idb.result;
+      }
+      idb.onerror = (ev) => {
         return reject(false);
       }
     })
   }
   //*****************[IDB COMMON INSERT/UPDATE ]*****************/
-  commonInsert(flag: 'INSERT' | 'UPDATE', idbRef: IDBOpenDBRequest, data: I_IndexedDB_INSERT<T>[]) {
+  commonInsertUpdateDelete(flag: 'INSERT' | 'UPDATE' | 'DELETE', idbRef: IDBOpenDBRequest, data: I_IndexedDB_INSERT<T>[]) {
     let res = idbRef.result;
     data.forEach((element: I_IndexedDB_INSERT<T>) => {
       if (res.objectStoreNames.contains(element.tableName)) {
         let tx = res.transaction(element.tableName, 'readwrite');
         let store = tx.objectStore(element.tableName);
         if (flag == 'INSERT') store.put({ ...element.data });
-        else store.put({ ...element.data }, element.data['key']);
+        else if (flag == 'UPDATE') store.put({ ...element.data }, element.data['key']);
+        else store.delete(element.data['key']);
       }
     });
   }
 
-  //*****************[IDB COMMON INSERT/UPDATE ]*****************/
-  deleteInsertedData(e: I_IndexedDB_INSERT<T>): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      let idb = this.openDB();
-      idb.onsuccess = () => {
-        let res = idb.result;
-        let tx = res.transaction(e.tableName, 'readwrite');
-        let store = tx.objectStore(e.tableName);
-        store.delete(e.data['key']);
-        return resolve(true);
-      }
-      idb.onupgradeneeded = (ev) => {
-        let res = idb.result;
-      }
-      idb.onerror = (ev) => {
-        console.log("Error log", ev);
-        this.common.presentToast('Error occured during indexedDB table open.', 'error');
-        return reject(false);
-      }
-    })
-  }
+
   //*****************[IDB COMMON INSERT/UPDATE ]*****************/
   getAllInsertedData(e: string): Promise<T[] | boolean> {
     return new Promise((resolve, reject) => {
@@ -118,8 +111,6 @@ export class IndexedDbService<T> {
         let res = idb.result;
       }
       idb.onerror = (ev) => {
-        console.log("Error log", ev);
-        this.common.presentToast('Error occured during indexedDB table open.', 'error');
         return reject(false);
       }
     })
@@ -128,7 +119,7 @@ export class IndexedDbService<T> {
 
   //*****************[IDB APP LAUNCH DB INIT]*****************/
   onInitIndexedDb() { // creating the IDB for the first time
-    let idb = indexedDB.open(IDB_DB_NAME, IDB_CURRENT_VERSION);
+    let idb = this.openDB();
     idb.onupgradeneeded = (ev) => {
       let res = idb.result;
       this.databaseVersion = res.version;
