@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
     { title: 'Dashboard', url: '/dashboard', icon: 'warning' },
     { title: 'Rxjs', url: '/rxjs', icon: 'warning' },
     { title: 'IndexedDB', url: '/indexed-db', icon: 'warning' },
+    { title: 'Lead', url: '/lead', icon: 'warning' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(

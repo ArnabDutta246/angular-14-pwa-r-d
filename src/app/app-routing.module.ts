@@ -23,6 +23,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/indexed-db/indexed-db.module').then(m => m.IndexedDBPageModule)
   },
   {
+    path: 'lead',
+    loadChildren: () => import('./pages/lead/lead.module').then(m => m.LeadPageModule)
+  },
+  {
     path: '',
     redirectTo: 'folder/Inbox',
     pathMatch: 'full'
@@ -31,10 +35,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'folder/Inbox',
   },
-  {
-    path: 'lead',
-    loadChildren: () => import('./pages/lead/lead.module').then( m => m.LeadPageModule)
-  },
+
 
 ];
 
