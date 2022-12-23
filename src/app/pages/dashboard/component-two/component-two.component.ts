@@ -7,7 +7,7 @@ import { COMPONENT_TWO_TOKEN, InjectorShareService } from '../shared-injector/in
   styleUrls: ['./component-two.component.scss'],
 })
 export class ComponentTwoComponent implements OnInit {
-
+  data: any = null;
   constructor(
     private injectorService: InjectorShareService,
     private injector: Injector
@@ -16,8 +16,8 @@ export class ComponentTwoComponent implements OnInit {
   ngOnInit() {
     // let data = this.injectorService.receiveToken(COMPONENT_TWO_TOKEN);
     // console.log("two data:", data);
-    let data = this.injector.get(COMPONENT_TWO_TOKEN)
-    console.log("one data:", data);
+    this.data = this.injector.get(COMPONENT_TWO_TOKEN)
+    console.log("one data:", this.data);
   }
 
 }
