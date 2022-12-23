@@ -8,6 +8,10 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
 import { HeaderModule } from 'src/app/shared-components/header/header.module';
+import { ComponentOneComponent } from './component-one/component-one.component';
+import { ComponentTwoComponent } from './component-two/component-two.component';
+import { ComponentThreeComponent } from './component-three/component-three.component';
+import { InjectorShareService } from './shared-injector/injectors';
 
 @NgModule({
   imports: [
@@ -17,6 +21,18 @@ import { HeaderModule } from 'src/app/shared-components/header/header.module';
     DashboardPageRoutingModule,
     HeaderModule
   ],
-  declarations: [DashboardPage]
+  declarations: [
+    DashboardPage,
+    ComponentOneComponent,
+    ComponentTwoComponent,
+    ComponentThreeComponent
+  ],
+  exports: [
+    ComponentOneComponent,
+    ComponentTwoComponent,
+    ComponentThreeComponent
+  ],
+  providers: [
+  ]
 })
 export class DashboardPageModule { }

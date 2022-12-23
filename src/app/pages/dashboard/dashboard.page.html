@@ -1,4 +1,17 @@
 <app-header></app-header>
 <ion-content>
-  <h1>Dashboard</h1>
+  <ion-item>
+    <ion-buttons>
+      <ion-button fill="solid" color="primary" (click)="reArrangeComponent(1)">Arrange 1</ion-button>
+      <ion-button fill="solid" color="warning" (click)="reArrangeComponent(2)">Arrange 2</ion-button>
+      <ion-button fill="solid" color="success" (click)="reArrangeComponent(3)">Arrange 3</ion-button>
+    </ion-buttons>
+  </ion-item>
+  <ng-container *ngFor="let comp of componentList;let i=index">
+    <!-- {{i}}{{comp.sequence}} -->
+    <!--  *ngIf="i == comp.sequence" -->
+    <ng-container>
+      <ng-container [ngComponentOutlet]="comp.component" [ngComponentOutletInjector]="comp.injector"></ng-container>
+    </ng-container>
+  </ng-container>
 </ion-content>
