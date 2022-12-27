@@ -27,6 +27,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/lead/lead.module').then(m => m.LeadPageModule)
   },
   {
+    path: 'basic-ngxs',
+    loadChildren: () => import('./pages/basic-ngxs/basic-ngxs.module').then(m => m.BasicNgxsPageModule)
+  },
+  {
     path: '',
     redirectTo: 'folder/Inbox',
     pathMatch: 'full'

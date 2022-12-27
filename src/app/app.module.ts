@@ -13,13 +13,16 @@ import { InjectorShareService } from './pages/dashboard/shared-injector/injector
 // import { StoreModule } from '@ngrx/store';
 // import { LoaderReducer } from './states/loader/loader.reducer';
 // import { LOADER_FEARTURE_KEY } from './states/loader/loader.selector';
-
+//For NGXS
+import { NgxsModule } from '@ngxs/store';
+import { PostState } from './pages/basic-ngxs/ngxs/basic-ngxs.state';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    NgxsModule.forRoot([PostState]),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // enabled: true,

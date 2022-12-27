@@ -20,6 +20,8 @@ export class AppComponent implements OnInit {
     { title: 'Rxjs', url: '/rxjs', icon: 'warning' },
     { title: 'IndexedDB', url: '/indexed-db', icon: 'warning' },
     { title: 'Lead', url: '/lead', icon: 'warning' },
+    { title: 'POST ngXs', url: '/basic-ngxs', icon: 'warning' },
+
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(
