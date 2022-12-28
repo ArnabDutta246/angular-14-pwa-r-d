@@ -29,4 +29,8 @@ export class PostService {
     singlePost(id: number): Observable<I_Post> {
         return this.http.get('https://jsonplaceholder.typicode.com/posts/' + id) as Observable<I_Post>;
     }
+
+    getValue() {
+        return this.http.get('https://essamapi.azurewebsites.net/api/values')
+    }
 }

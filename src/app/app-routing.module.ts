@@ -31,6 +31,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/basic-ngxs/basic-ngxs.module').then(m => m.BasicNgxsPageModule)
   },
   {
+    path: 'loader-check',
+    loadChildren: () => import('./pages/loader-check/loader-check.module').then(m => m.LoaderCheckPageModule)
+  },
+  {
     path: '',
     redirectTo: 'folder/Inbox',
     pathMatch: 'full'

@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     { title: 'IndexedDB', url: '/indexed-db', icon: 'warning' },
     { title: 'Lead', url: '/lead', icon: 'warning' },
     { title: 'POST ngXs', url: '/basic-ngxs', icon: 'warning' },
-
+    { title: 'Loader', url: '/loader-check', icon: 'warning' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor(

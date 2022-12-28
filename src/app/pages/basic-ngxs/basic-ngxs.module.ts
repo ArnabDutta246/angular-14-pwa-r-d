@@ -9,6 +9,7 @@ import { BasicNgxsPageRoutingModule } from './basic-ngxs-routing.module';
 import { BasicNgxsPage } from './basic-ngxs.page';
 import { NgxsModule } from '@ngxs/store';
 import { PostState } from './ngxs/basic-ngxs.state';
+import { HeaderModule } from 'src/app/shared-components/header/header.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { PostState } from './ngxs/basic-ngxs.state';
     FormsModule,
     IonicModule,
     BasicNgxsPageRoutingModule,
+    HeaderModule,
     NgxsModule.forFeature([PostState])
   ],
   declarations: [BasicNgxsPage]

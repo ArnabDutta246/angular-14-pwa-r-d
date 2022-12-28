@@ -47,12 +47,12 @@ export class FolderPage implements OnInit, OnDestroy {
     //===============Get Products=================//
     this.getAllProducts();
     this.getSingleProducts(2)
-    const numbers = interval(4000);
-    this.subscriber = numbers
-      .subscribe(x => console.log('Next: ', x));
-    const numbers1 = interval(6000);
-    this.subscriber = numbers1
-      .subscribe(x => console.log('Next: ', x));
+    // const numbers = interval(4000);
+    // this.subscriber = numbers
+    //   .subscribe(x => console.log('Next: ', x));
+    // const numbers1 = interval(6000);
+    // this.subscriber = numbers1
+    //   .subscribe(x => console.log('Next: ', x));
   }
 
 

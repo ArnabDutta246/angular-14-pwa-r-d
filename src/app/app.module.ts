@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InjectorShareService } from './pages/dashboard/shared-injector/injectors';
 // import { StoreModule } from '@ngrx/store';
 // import { LoaderReducer } from './states/loader/loader.reducer';
@@ -16,6 +16,8 @@ import { InjectorShareService } from './pages/dashboard/shared-injector/injector
 //For NGXS
 import { NgxsModule } from '@ngxs/store';
 import { PostState } from './pages/basic-ngxs/ngxs/basic-ngxs.state';
+import { LoaderInterceptService } from './services/intercept/loaderIntercept.service';
+import { ApiLoaderState } from './services/intercept/api-loader-state/loader.state';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,8 +35,12 @@ import { PostState } from './pages/basic-ngxs/ngxs/basic-ngxs.state';
     }),
     HttpClientModule,
     // StoreModule.forFeature(LOADER_FEARTURE_KEY, LoaderReducer),
+    NgxsModule.forRoot([ApiLoaderState])
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptService, multi: true }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

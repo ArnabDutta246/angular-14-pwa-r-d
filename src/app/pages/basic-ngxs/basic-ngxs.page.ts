@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { PostService } from './ngxs/basic-ngrx.service';
 import { PostsAction } from './ngxs/basic-ngxs.action';
 import { PostState } from './ngxs/basic-ngxs.state';
 
@@ -11,7 +12,7 @@ import { PostState } from './ngxs/basic-ngxs.state';
 })
 export class BasicNgxsPage implements OnInit {
   @Select(PostState.getPosts) allPosts$: Observable<any>;
-  constructor(private store: Store) { }
+  constructor(private store: Store, private postServ: PostService) { }
 
   ngOnInit() {
 
@@ -19,6 +20,10 @@ export class BasicNgxsPage implements OnInit {
 
     this.allPosts$.subscribe((returnData) => {
       console.log(returnData);
+    })
+
+    this.postServ.getValue().subscribe((res: any) => {
+      console.log(res);
     })
   }
 
