@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
 import { CommonService } from '../common/common.service';
 import { IDB_CURRENT_VERSION, IDB_DB_NAME, Indexed_tables, I_IDB_TABLE } from './indexedDB';
+// export interface I_IndexedDB_INSERT<T> {
+//   data: T | T[];
+//   tableName: string;
+// }
 export interface I_IndexedDB_INSERT<T> {
   data: T | T[];
   tableName: string;
+}
+export interface d<T> {
+  key?: any;
 }
 
 @Injectable({
@@ -71,10 +78,23 @@ export class IndexedDbService<T> {
       }
     })
   }
+  // //*****************[IDB COMMON INSERT/UPDATE ]*****************/
+  // commonInsertUpdateDelete(flag: 'INSERT' | 'UPDATE' | 'DELETE', idbRef: IDBOpenDBRequest, data: I_IndexedDB_INSERT<T>[]) {
+  //   let res = idbRef.result;
+  //   data.forEach((element: I_IndexedDB_INSERT<T>) => {
+  //     if (res.objectStoreNames.contains(element.tableName)) {
+  //       let tx = res.transaction(element.tableName, 'readwrite');
+  //       let store = tx.objectStore(element.tableName);
+  //       if (flag == 'INSERT') store.put({ ...element.data });
+  //       else if (flag == 'UPDATE') store.put({ ...element.data }, element.data['key']);
+  //       else store.delete(element.data['key']);
+  //     }
+  //   });
+  // }
   //*****************[IDB COMMON INSERT/UPDATE ]*****************/
-  commonInsertUpdateDelete(flag: 'INSERT' | 'UPDATE' | 'DELETE', idbRef: IDBOpenDBRequest, data: I_IndexedDB_INSERT<T>[]) {
+  commonInsertUpdateDelete(flag: 'INSERT' | 'UPDATE' | 'DELETE', idbRef: IDBOpenDBRequest, data: any) {
     let res = idbRef.result;
-    data.forEach((element: I_IndexedDB_INSERT<T>) => {
+    data.forEach((element: any) => {
       if (res.objectStoreNames.contains(element.tableName)) {
         let tx = res.transaction(element.tableName, 'readwrite');
         let store = tx.objectStore(element.tableName);

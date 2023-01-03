@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
-import { AlertController } from '@ionic/angular';
+import { AlertController, IonSlides } from '@ionic/angular';
 import { CommonService } from 'src/app/services/common/common.service';
 import { SwService, sw_interface } from 'src/app/services/sw/sw.service';
 import { environment } from 'src/environments/environment';
@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
+  @ViewChild('img', { static: true }) img: IonSlides
   @ViewChild('clickAddToHome', { static: true, read: ElementRef<HTMLElement> }) clickAddToHome: ElementRef<HTMLElement>;
   public currentApplicationVersion = environment.appVersion;
   public msg: string;
